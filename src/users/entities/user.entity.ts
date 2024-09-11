@@ -10,6 +10,8 @@ export class User {
     email: string;
     @Column({nullable:true})
     password: string;
+    @Column({type: "double", default:0})
+    balance: number;
     @CreateDateColumn()
     createAt: Date;
     @UpdateDateColumn()
