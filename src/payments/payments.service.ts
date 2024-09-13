@@ -12,7 +12,9 @@ export class PaymentsService {
     private paymentRepository: Repository<Payment>,
   ){  }
 
-  async doPaymentOpenpay(amount, info, customer, uid){
+  async doPaymentOpenpay(data){
+    const {uid, amount, info, customer, balance } = data
+
     const Openpay = require('openpay');
     // production
     // Openpay.setProductionMode(true);
@@ -27,7 +29,8 @@ export class PaymentsService {
 
     const metadataRequest = {
       'user': uid,
-      'comerce': 'sms_app'
+      'comerce': 'sms_app',
+      'balance' : balance
     }
 
     const chargeRequest = {

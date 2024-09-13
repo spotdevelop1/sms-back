@@ -5,4 +5,9 @@ import { WebhookService } from './webhook.service';
 export class WebhookController {
   constructor(private readonly webhookService: WebhookService) {}
 
+  @Post('openpay')
+  openpay(@Body() OpenpayRequest) {
+    return this.webhookService.Openpay(OpenpayRequest);
+  }
+
 }

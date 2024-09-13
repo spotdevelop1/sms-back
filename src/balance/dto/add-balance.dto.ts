@@ -6,6 +6,9 @@ export class AddBalanceDto{
 
     @IsNumber()
     amount: number;
+    
+    @IsNumber()
+    balance: number;
 
     @IsString()
     info: string;

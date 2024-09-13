@@ -13,10 +13,10 @@ export class BalanceService {
   ){  }
 
   async AddBalance (data:AddBalanceDto){
-    const {uid, amount, info, customer } = data
+    const {uid, amount, info } = data
 
     try {
-      const respOpenpay = await this.paymentService.doPaymentOpenpay( amount, info, customer, uid )
+      const respOpenpay = await this.paymentService.doPaymentOpenpay( data )
       
       const paymentData = {
         'desc':info,
@@ -34,9 +34,6 @@ export class BalanceService {
       throw new BadRequestException('Openpay error')
     }
 
-
-    // const resp = await this.userService.updateUser(uid, {'balance': amount})
-    // return resp
   }
 
 }
