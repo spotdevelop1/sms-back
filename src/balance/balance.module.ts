@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { BalanceService } from './balance.service';
 import { BalanceController } from './balance.controller';
-import { UsersModule } from 'src/users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from 'src/auth/constants/jwt.constants';
+import { UsersModule } from 'src/users/users.module';
+import { PaymentsModule } from 'src/payments/payments.module';
 
 @Module({
-  imports:[UsersModule, 
+  imports:[UsersModule, PaymentsModule,
     JwtModule.register({
       global:true,
       secret: jwtConstants.secret,

@@ -1,26 +1,60 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePaymentDto } from './dto/create-payment.dto';
-import { UpdatePaymentDto } from './dto/update-payment.dto';
+import { Payment } from './entities/payment.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { AddPaymentDto } from './dto/add-payment.dto';
 
 @Injectable()
 export class PaymentsService {
-  create(createPaymentDto: CreatePaymentDto) {
-    return 'This action adds a new payment';
+
+  constructor(
+    @InjectRepository(Payment)
+    private paymentRepository: Repository<Payment>,
+  ){  }
+
+  async doPaymentOpenpay(amount, info, customer, uid){
+    const Openpay = require('openpay');
+    // production
+    // Openpay.setProductionMode(true);
+    // const openpay = new Openpay('mtnizw0lnm17errvb1rl', 'sk_0a080b3143ee4bf6b428362ddaa4a48c');
+
+    // test
+    const openpay = new Openpay('mpxjtlnasipbctyey0js', 'sk_5fdd44dbb4e2488bbeff58176d1dde63');
+    
+    //test
+
+    // const openpay = new Openpay('mpvtgwbcwdtr7vdrwq8w', 'sk_05d88d591ac646548c7c362800802bde');
+
+    const metadataRequest = {
+      'user': uid,
+      'comerce': 'sms_app'
+    }
+
+    const chargeRequest = {
+      'method' : 'card',
+      'amount' : amount,
+      'description' : info,
+      'customer' : customer,
+      'metadata' : metadataRequest,
+      'send_email' : true,
+      'confirm' : false,
+      'redirect_url' : 'http://spot1mobile.com/'
+    }
+
+   const resOpenpay = new Promise( (resolve, reject) => {
+      openpay.charges.create(chargeRequest, function(error, charge) {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(charge);
+        }
+      });
+    });
+
+    return resOpenpay;
   }
 
-  findAll() {
-    return `This action returns all payments`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} payment`;
-  }
-
-  update(id: number, updatePaymentDto: UpdatePaymentDto) {
-    return `This action updates a #${id} payment`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} payment`;
+  savePayment(paymentData: AddPaymentDto) {
+    return this.paymentRepository.insert(paymentData);
   }
 }

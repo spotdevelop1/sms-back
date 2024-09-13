@@ -6,6 +6,7 @@ import {TypeOrmModule} from '@nestjs/typeorm'
 import { AuthModule } from './auth/auth.module';
 import { BalanceModule } from './balance/balance.module';
 import { PaymentsModule } from './payments/payments.module';
+import { WebhookModule } from './webhook/webhook.module';
 @Module({
   imports: [UsersModule, TypeOrmModule.forRoot({
     type: 'mysql',
@@ -16,7 +17,7 @@ import { PaymentsModule } from './payments/payments.module';
     database: 'sms-project',
     entities: [__dirname + '/../**/*.entity.js'],
     synchronize: true
-  }), AuthModule, BalanceModule, PaymentsModule],
+  }), AuthModule, BalanceModule, PaymentsModule, WebhookModule],
   controllers: [AppController],
   providers: [AppService],
 })
