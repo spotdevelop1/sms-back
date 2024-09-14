@@ -21,6 +21,11 @@ export class UsersService {
     return this.userRepository.findOneBy({email});
   }
 
+  async findOneByUid(uid: string) {
+    const user = await this.userRepository.findOneBy({uid});
+    return user 
+  }
+
 
   findAll() {
     return `This action returns all users`;

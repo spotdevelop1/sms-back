@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import {TypeOrmModule} from '@nestjs/typeorm'
 import { AuthModule } from './auth/auth.module';
+import { NumbersModule } from './numbers/numbers.module';
 @Module({
   imports: [UsersModule, TypeOrmModule.forRoot({
     type: 'mysql',
@@ -11,10 +12,10 @@ import { AuthModule } from './auth/auth.module';
     port: 3306,
     username: 'root',
     password: '',
-    database: 'spot_sms',
+    database: 'sms-project',
     entities: [__dirname + '/../**/*.entity.js'],
     synchronize: true
-  }), AuthModule],
+  }), AuthModule, NumbersModule],
   controllers: [AppController],
   providers: [AppService],
 })
