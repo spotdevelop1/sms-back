@@ -13,6 +13,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ){  }
 
+
   async signup(userData:SignupDto) {
     const { password, email } = userData;
     const user = await this.userService.findOneByEmail(email)
@@ -30,6 +31,7 @@ export class AuthService {
 
   async signin(userData:SigninDto){
     const { password, email } = userData;
+
     const user = await this.userService.findOneByEmail(email)
 
     if (!user) {
@@ -41,7 +43,15 @@ export class AuthService {
     if (!isPasswordVal) {
       throw new UnauthorizedException('Password is wrong')
     }
-    return user
+
+    const payload = {email: user.email, sub: user.uid}
+
+    const token = await this.jwtService.signAsync(payload)
+
+    return {
+      token,
+      user
+    }
   }
 
 }
