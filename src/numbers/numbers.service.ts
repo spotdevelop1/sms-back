@@ -13,10 +13,10 @@ export class NumbersService {
     private readonly numberRepository: Repository<Number>,
   ){  }
   
-  async create(createNumberDto: CreateNumberDto) {
-    const numbersToSave =  createNumberDto.numbers.map((number) => {
+  async create(createNumberDto: CreateNumberDto) { //MultiNumber
+    const numbersToSave =  createNumberDto.numbers.map((phone) => {
       const numberEntity = new Number();
-      numberEntity.phone = number.phone;
+      numberEntity.phone = phone;
       return numberEntity;
     })
 
