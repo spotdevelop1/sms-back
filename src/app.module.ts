@@ -8,6 +8,7 @@ import { NumbersModule } from './numbers/numbers.module';
 import { BalanceModule } from './balance/balance.module';
 import { PaymentsModule } from './payments/payments.module';
 import { WebhookModule } from './webhook/webhook.module';
+import { MessagesModule } from './messages/messages.module';
 @Module({
   imports: [UsersModule, TypeOrmModule.forRoot({
     type: 'mysql',
@@ -18,7 +19,7 @@ import { WebhookModule } from './webhook/webhook.module';
     database: 'sms-project',
     entities: [__dirname + '/../**/*.entity.js'],
     synchronize: true
-  }), AuthModule, BalanceModule, PaymentsModule, WebhookModule, NumbersModule],
+  }), AuthModule, BalanceModule, PaymentsModule, WebhookModule, NumbersModule, MessagesModule],
   controllers: [AppController],
   providers: [AppService],
 })

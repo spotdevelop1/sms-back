@@ -1,3 +1,5 @@
+import { Message } from "src/messages/entities/message.entity";
+import { Number } from "src/numbers/entities/number.entity";
 import { Payment } from "src/payments/entities/payment.entity";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, UpdateDateColumn } from "typeorm";
 
@@ -17,6 +19,10 @@ export class User {
     balance: number;
     @OneToMany(() => Payment, (payment) => payment.user)
     payments: Payment[]
+    @OneToMany(() => Number, (number) => number.user)
+    numbers: Number[]
+    @OneToMany(()=> Message, (message) => message.user)
+    messages: Number[]
     @CreateDateColumn()
     createAt: Date;
     @UpdateDateColumn()
