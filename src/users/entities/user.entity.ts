@@ -11,8 +11,12 @@ export class User {
     name: string;
     @Column({nullable:false})
     lastname: string;
+    @Column({nullable:false})
+    cellphone: string;
     @Column({unique:true, nullable:false})
     email: string;
+    @Column({nullable:false})
+    code: string;
     @Column({nullable:false})
     password: string;
     @Column({type: "double", default:0})

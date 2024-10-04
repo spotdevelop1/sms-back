@@ -10,7 +10,12 @@ export class SignupDto {
     @IsString()
     lastname: string;
     
-     @IsEmail()
+    @IsString()
+    cellphone: string;
+
+    code: string;
+    
+    @IsEmail()
     email: string;
 
     @Transform(({value})=> value.trim())
