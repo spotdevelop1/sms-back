@@ -22,7 +22,7 @@ export class User {
     @OneToMany(() => Number, (number) => number.user)
     numbers: Number[]
     @OneToMany(()=> Message, (message) => message.user)
-    messages: Number[]
+    messages: Message[]
     @CreateDateColumn()
     createAt: Date;
     @UpdateDateColumn()
