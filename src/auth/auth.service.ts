@@ -5,7 +5,7 @@ import { v4 as uid } from 'uuid';
 import { hash, compare } from 'bcrypt';
 import { SigninDto } from './dto/signin.dto';
 import { JwtService } from '@nestjs/jwt';
-import { random_number } from '../common/helpers'
+import { random_number } from '../common/helpers/others'
 
 @Injectable()
 export class AuthService { 

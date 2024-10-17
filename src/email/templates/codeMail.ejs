@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Accesos SpotUno</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        </head>
+        <body>
+            <div class="container">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body col-md-12">
+                            <strong>Usuario: </strong>{{$email}}<br><br>
+                            <p class="card-text">Alguien intenta iniciar sesión en le sistema CRM Spot con un nuevo dispositivo.<br>
+                                <span class="">Introduce el siguiente código para completar el inicio de sesión: </span><br><br>
+                                <div class="alert alert-secondary" role="alert">
+                                    <span class="text-center">{{$verification_code}}</span>
+                                </div><br><br>
+                                <span class="text-danger">Si NO lo iniciaste tú, deberías cambiar tu contraseña de CRM Spot inmediatamente para garantizar la seguridad de tu cuenta.</span>
+                                Si el código de verificación no funciona, solicita uno nuevo y sigue estos pasos para solucionarlo:
+                                <li>Usa una pestaña de incógnito del navegador o un navegador diferente.</li>
+                                <li>Borra la caché y las cookies del navegador y deshabilita cualquier complemento o extensión.</li>
+                            </p>
+                            {{-- PENDIENTE --}}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
