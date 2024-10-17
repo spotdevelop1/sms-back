@@ -9,7 +9,7 @@ export class NumbersController {
 
   @Post('create')
   create(@Body() createNumberDto: CreateNumberDto) {
-    return this.numbersService.create(createNumberDto);
+    // return this.numbersService.create(createNumberDto);
   }
 
   @Get()

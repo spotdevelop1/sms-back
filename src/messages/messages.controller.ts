@@ -1,15 +1,20 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { MessagesService } from './messages.service';
-import { CreateMessageDto } from './dto/create-message.dto';
+import { CrearNumber, CreateMessageDto } from './dto/create-message.dto';
 import { UpdateMessageDto } from './dto/update-message.dto';
 
 @Controller('messages')
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
-  @Post()
-  create(@Body() createMessageDto: CreateMessageDto) {
-    return this.messagesService.create(createMessageDto);
+  @Post('manyNumbers')
+  createManyNumbers(@Body() createMessageDto: CreateMessageDto) {
+    return this.messagesService.createMessage(createMessageDto);
+  }
+
+  @Post('numbers')
+  createNumber(@Body() crearNumber: CrearNumber) {
+    return this.messagesService.crearNumber(crearNumber);
   }
 
   @Get()

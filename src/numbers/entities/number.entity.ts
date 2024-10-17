@@ -11,7 +11,7 @@ export class Number {
     @ManyToOne(() => User, (user) => user.numbers, {nullable:false})
     user: User;
     @OneToMany(()=> Message, (message) => message.number)
-    messages:Number[]
+    messages:Message[]
     @CreateDateColumn()
     createat:Date
     @UpdateDateColumn()
