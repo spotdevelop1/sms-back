@@ -1,7 +1,8 @@
 import { Transform } from "class-transformer";
-import { IsEmail, IsString, MinLength } from "class-validator";
+import { IsEmail, IsString, IsUUID, MinLength } from "class-validator";
 
 export class SignupDto {
+    @IsUUID()
     uid: string;
 
     @IsString()

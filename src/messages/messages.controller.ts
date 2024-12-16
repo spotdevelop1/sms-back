@@ -12,10 +12,6 @@ export class MessagesController {
     return this.messagesService.createMessage(createMessageDto);
   }
 
-  @Post('numbers')
-  createNumber(@Body() crearNumber: CrearNumber) {
-    return this.messagesService.crearNumber(crearNumber);
-  }
 
   @Get()
   findAll() {

@@ -37,7 +37,7 @@ export class ApisService {
         msisdn:`52${msisdn}`,
         clientID: this.clientId,
         sender: "81900",
-        message: `El código de validación es: ${message}`,
+        message: `${message}`,
       }),
     });
     console.log(msisdn);
